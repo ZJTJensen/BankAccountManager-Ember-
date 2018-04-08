@@ -1,0 +1,108 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .backgroundGray{
+        display: inline-block;
+        width: 80%;
+        height: 100%;
+        background-color: lightgray;
+    }
+ .button{
+     color:white;
+     text-decoration: none;
+ }
+ ul{
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+ }
+ li{
+     padding: 10px;
+     margin: 10px 0 5px 10px;
+ }
+ .portal{
+    padding: 20px 0 0 0;
+ }
+ .arrow{
+     padding: 0 10px 0 20px;
+ }
+ .menuText{
+     margin: 15px 0 0 10px;
+ }
+</style>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+<div class ="fl w-100 ba b--mid-gray h3">
+    <div class="dib w-20 h-100 bl br b--mid-gray v-mid tc portal">
+        <p class ="dib v-mid gray tc  "> PORTAL </p>
+    </div> 
+    <div class="dib w3 h-100 br b--mid-gray v-mid tc portal">
+        <p class="">{{paper-icon "format-indent-decrease"}}</p>
+    </div>
+    <div class="dib w3 h-100 bl b--mid-gray v-mid fr tc portal">
+        <p class="tc">
+        {{paper-icon "format-list-bulleted"}}
+        </p>
+    </div>
+    <div class="dib h-100 v-mid fr tc portal">
+        <p class="tc arrow">
+        {{paper-icon "keyboard-arrow-down"}}
+        </p>
+    </div>
+    <div id= 'person' class="dib h-100 v-mid fr tc portal arrow" style='padding:15px 0 0 0;'>
+        <p>{{paper-icon "person-pin" size=48}} <span style="padding: 35px 0 0 0;">Land Grant Title</span></p>
+    </div>
+</div>
+<div class="fl w-20 vh-100">
+    {{#paper-toolbar}}
+<div class ="di bg-navy fl w-100 vh-100 ">
+    <p class="gray menuText">MENU</p>
+    <ul class ="bg-navy">
+        <li class="white sans-serif b dim">{{paper-icon "insert-drive-file" color="white"}}Orders</li>
+        {{#paper-toolbar}}
+            <li class="white sans-serif b dim" >
+                {{#link-to "accounts" class ="button" }}
+                    {{paper-icon "library-books" color="white"}}Accounts
+                {{/link-to}}
+            </li>
+        {{/paper-toolbar}}
+        <li class="white sans-serif b dim">{{paper-icon "person-outline" color="white"}}Administration</li>
+        <li class="white sans-serif b dim">{{paper-icon "live-help" color="white"}}Help & feedback</li>
+    </ul>
+</div>
+    {{/paper-toolbar}}
+</div>
+<div class ="dib w-80 vh-100 bg-white cover">
+    {{outlet}}
+
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        function check(){
+        if(window.location.href.indexOf("ts") > -1){
+            console.log("hello")
+            document.getElementById("person").style.display ="inline-block";
+            
+        }
+        else{
+            document.getElementById("person").style.display ="none";
+            
+        }
+        }
+        check();
+        $('div').mousemove(function(){
+             if(window.location.href.indexOf("ts") > -1){
+            console.log("hello")
+            document.getElementById("person").style.display ="inline-block";
+            }
+            else{
+                document.getElementById("person").style.display ="none";
+                
+            }
+        })
+    })
+</script>
